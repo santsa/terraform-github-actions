@@ -1,9 +1,18 @@
 terraform {
-  required_version = "~> 4.67.0"
+  required_version = "~> 1.15.0"
+
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+  
+  #aws s3api create-bucket --bucket santsa-terraform-actions --region eu-south-2 --create-bucket-configuration LocationConstraint=eu-south-2
   
   backend "s3" {
     bucket = "santsa-terraform-actions"
-    key = "santsa-terroform-actions.tfstate"
+    key = "santsa-terraform-actions.tfstate"
     region = "eu-south-2"
   }
 }

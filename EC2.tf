@@ -1,22 +1,24 @@
 ## Random
-resource "random_get" "sg" {}
+resource "random_id" "sg" {
+  byte_length = 4
+}
 
 ## AWS VPC
 resource "aws_vpc" "awsec2demo" {
   cidr_block = "172.16.0.0/16"
   
   tags = {
-    Name = "vpc-quikcloudpocs"
+    Name = "vpc-santsa"
   }
 }
 
 ## AWS VPC Subnet
-resource "aws_subnet" "awssec2demo" {
+resource "aws_subnet" "awsec2demo" {
   vpc_id = aws_vpc.awsec2demo.id
   cidr_block = "172.16.10.0/24"
   
   tags = {
-    Name = "subnet-quikcloudpocs"
+    Name = "subnet-santsa"
   }
   
 }
@@ -27,33 +29,33 @@ resource "aws_network_interface" "awsec2demo" {
   private_ips = ["172.16.10.100"]
   
   tags = {
-    Name = "NI-quikcloudpocs"
+    Name = "NI-santsa"
   }
 }
 
-resource "aws_security_group" "awssec2demo" {
-  name = "${random_get.sg.id}-sg"
+resource "aws_security_group" "awsec2demo" {
+  name = "${random_id.sg.hex}-sg"
   vpc_id = aws_vpc.awsec2demo.id
   
   tags = {
-    Name = "sg-quikcloudpocs"
+    Name = "sg-santsa"
   }
 }
 
 resource "aws_vpc_security_group_ingress_rule" "http_8080" {
-  security_group_id = aws_security_group.awssec2demo.id
+  security_group_id = aws_security_group.awsec2demo.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 8080
   to_port           = 8080
   ip_protocol       = "tcp"
 }
 resource "aws_vpc_security_group_egress_rule" "all" {
-  security_group_id = aws_security_group.awssec2demo.id
+  security_group_id = aws_security_group.awsec2demo.id
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1"
 }
 
-resource "aws_instance" "awssec2demo" {
+resource "aws_instance" "awsec2demo" {
   ami = "ami-xxxx"
   instance_type = "t2.micro"
   

@@ -18,6 +18,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
+      - name: Check or Create S3 Backend Bucket
+        run: |
+          BUCKET_NAME="santsa-terraform-actions"
+          if aws s3api head-bucket --bucket "$BUCKET_NAME" 2>/dev/null; then
+            echo "The buket exists."
+          else
+            echo "The bucket does not exists. Creating it a eu-south-2..."
+            aws s3api create-bucket \
+              --bucket "$BUCKET_NAME" \
+              --region eu-south-2 \
+              --create-bucket-configuration LocationConstraint=eu-south-2
+          fi
+        
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         
@@ -35,7 +48,7 @@ jobs:
         if: steps.plan.outcome == 'failure'
         run: exit 1
         
-      - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-aprove
+      #- name: Terraform Apply
+      # if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      # run: terraform apply -auto-aprove
       
