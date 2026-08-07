@@ -29,12 +29,12 @@ jobs:
             "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=sts.amazonaws.com" | \
             jq -R 'split(".") | .[1] | @base64d | fromjson'        
               
-            - name: Configure AWS Credentials
-              uses: aws-actions/configure-aws-credentials@v4
-              with:
-                role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-                aws-region: ${{ env.AWS_REGION }}   
-                audience: sts.amazonaws.com
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}   
+          audience: sts.amazonaws.com
         
       - name: Check or Create S3 Backend Bucket
         run: |
