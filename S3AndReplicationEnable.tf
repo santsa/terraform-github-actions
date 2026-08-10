@@ -1,9 +1,3 @@
-## Provider us-west-1
-provider "aws" {
-  alias  = "central"
-  region = "us-west-1"
-}
-
 ## AWS IAM ROLE
 resource "aws_iam_role" "replication" {
   name = "tf-iam-role-replication-santsa"
