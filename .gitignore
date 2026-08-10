@@ -7,4 +7,5 @@ crash.log
 override.tf
 override.tf.json
 .terraform.lock.hcl
+*-workspace
 
