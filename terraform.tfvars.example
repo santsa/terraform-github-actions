@@ -1,1 +1,16 @@
 target_aws_account_id = "357171621133"
+
+# Lambda
+lambda_archive_type           = "zip"
+lambda_source_file_path       = "Project/hello.js"
+lambda_zip_output_name        = "hello.zip"
+lambda_s3_bucket_name         = "xxxx"
+lambda_s3_bucket_tag_name     = "xxxx"
+lambda_s3_object_key          = "hello.zip"
+lambda_iam_role_name          = "lambda_role"
+lambda_assume_role_policy_path = "Project/lambda_assume_role_policy.json"
+lambda_iam_policy_name        = "lambda_policy"
+lambda_policy_path            = "Project/lambda_policy.json"
+lambda_function_name          = "hello"
+lambda_handler                = "hello.handler"
+lambda_runtime                = "nodejs22.x"
