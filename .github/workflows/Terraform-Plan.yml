@@ -2,8 +2,9 @@ name: "Terraform-Plan-Infra-Plan"
 
 on:
   push:
-    branches:
-      - FeatureBranchPlan
+    #branches:
+    branches-ignore:
+      - main
       
 jobs:
   terraform:
