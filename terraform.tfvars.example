@@ -14,3 +14,27 @@ lambda_policy_path            = "Project/lambda_policy.json"
 lambda_function_name          = "hello"
 lambda_handler                = "hello.handler"
 lambda_runtime                = "nodejs22.x"
+
+# =============================================
+# S3 Replication Values (prefix: s3repl_)
+# =============================================
+s3repl_iam_role_name              = "tf-iam-role-xxxxx-xxxxx"
+s3repl_assume_role_service        = "s3.amazonaws.com"
+s3repl_assume_role_action         = "sts:AssumeRole"
+s3repl_iam_policy_name            = "tf-iam-role-policy-xxxxx-xxxxx"
+s3repl_source_bucket_actions      = ["s3:ListBucket", "s3:GetReplicationConfiguration"]
+s3repl_source_object_actions      = ["s3:GetObjectVersionForReplication", "s3:GetObjectVersionAcl"]
+s3repl_destination_actions        = [
+  "s3:ReplicateObject",
+  "s3:ReplicateDelete",
+  "s3:ReplicateTags",
+  "s3:GetObjectVersionTagging"
+]
+s3repl_destination_bucket_name    = "tf-bucket-xxxxx-xxxxx"
+s3repl_source_bucket_name         = "tf-bucket-xxxxx-xxxxx"
+s3repl_source_bucket_acl          = "private"
+s3repl_versioning_enabled         = true
+s3repl_rule_id                    = "foobar"
+s3repl_rule_prefix                = "foo"
+s3repl_rule_status                = "Enabled"
+s3repl_destination_storage_class  = "STANDARD"
