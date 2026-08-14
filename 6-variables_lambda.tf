@@ -7,13 +7,13 @@ variable "lambda_archive_type" {
 variable "lambda_source_file_path" {
   description = "Relative path to the Lambda function source file"
   type        = string
-  default     = "Project/hello.js"
+  default     = "Project/Lambda/hello.js"
 }
 
 variable "lambda_zip_output_name" {
   description = "Output filename for the generated zip archive"
   type        = string
-  default     = "hello.zip"
+  default     = "Project/Lambda/hello.zip"
 }
 
 variable "lambda_s3_bucket_name" {
@@ -43,7 +43,7 @@ variable "lambda_iam_role_name" {
 variable "lambda_assume_role_policy_path" {
   description = "File path to the IAM assume role policy JSON document"
   type        = string
-  default     = "Project/lambda_assume_role_policy.json"
+  default     = "Project/Lambda/lambda_assume_role_policy.json"
 }
 
 variable "lambda_iam_policy_name" {
@@ -55,7 +55,7 @@ variable "lambda_iam_policy_name" {
 variable "lambda_policy_path" {
   description = "File path to the Lambda permissions policy JSON document"
   type        = string
-  default     = "Project/lambda_policy.json"
+  default     = "Project/Lambda/lambda_policy.json"
 }
 
 variable "lambda_function_name" {
@@ -73,5 +73,5 @@ variable "lambda_handler" {
 variable "lambda_runtime" {
   description = "Execution runtime identifier for the Lambda function"
   type        = string
-  default     = "nodejs12.x"
+  default     = "nodejs22.x"
 }
