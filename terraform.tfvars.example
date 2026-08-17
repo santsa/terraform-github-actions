@@ -46,3 +46,10 @@ lambda_layer_output_zip          = "Project/LambdaLayer/hello_layer.zip"
 lambda_layer_name                = "hello-world-layer"
 lambda_layer_compatible_runtimes = ["python3.9", "python3.10", "python3.11", "python3.12"]
 lambda_layer_description         = "Layer with hello_world utility function"
+
+# SCP / Organizations
+scp_ou_name                = "SCPDemoOU"
+scp_policy_name            = "aws_ou_scp"
+scp_policy_description     = "Deny EC2 instance launches that are not t3.micro"
+scp_statement_sid          = "RequireMicroInstanceType"
+scp_allowed_instance_type  = "t3.micro"
