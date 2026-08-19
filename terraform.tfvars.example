@@ -53,3 +53,6 @@ scp_policy_name            = "aws_ou_scp"
 scp_policy_description     = "Deny EC2 instance launches that are not t3.micro"
 scp_statement_sid          = "RequireMicroInstanceType"
 scp_allowed_instance_type  = "t3.micro"
+
+# Organizational Units
+ou_environment_names = ["DEV", "TEST", "PROD"]
