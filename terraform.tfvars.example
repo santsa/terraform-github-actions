@@ -56,3 +56,11 @@ scp_allowed_instance_type  = "t3.micro"
 
 # Organizational Units
 ou_environment_names = ["DEV", "TEST", "PROD"]
+
+# 10
+sns_topic_name                  = "xxxx-topic"
+sqs_queue_name                  = "xxxx-updates-queue"
+sqs_visibility_timeout_seconds = 300
+environment                     = "dev"
+sqs_dlq_name                    = "xxxx-updates-dl-queue"
+policy_name                    = "AllowSQSPermissions"

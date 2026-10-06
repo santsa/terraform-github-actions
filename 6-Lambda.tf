@@ -8,7 +8,8 @@ data "archive_file" "init" {
 ## S3 Bucket
 resource "aws_s3_bucket" "santsabucket" {
   bucket = var.lambda_s3_bucket_name
-
+  acl = var.s3repl_source_bucket_acl
+  
   tags = {
     Name = var.lambda_s3_bucket_tag_name
   }

@@ -1,3 +1,4 @@
-exports.handler = async (event) => {
-    console.log("Hello from Lambda: ", event);
+exports.handler = async (event, context) => {
+    console.log("EVENT\n: " + JSON.stringify(event));
+    return { success: true }
 };

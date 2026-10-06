@@ -10,3 +10,5 @@ override.tf.json
 *-workspace
 .env
 *.zip
+.github/copilot-instructions.md
+.vscode/settings.json
